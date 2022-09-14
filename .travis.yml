@@ -1,0 +1,16 @@
+os: linux
+language: python
+python: "3.10"
+dist: xenial
+compiler:
+  - gcc
+
+install:
+  - pip install conan
+  - conan user
+
+script:
+  - conan install . -s cppstd=20 -s build_type=Debug --build=missing
+  - cmake .
+  - cmake --build .
+  - ctest -C debug
