@@ -11,6 +11,5 @@ install:
 
 script:
   - conan install . -s cppstd=20 -s build_type=Debug --build=missing
-  - cmake .
-  - cmake --build .
+  - conan build .
   - ctest -C debug
